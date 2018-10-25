@@ -16,7 +16,7 @@ public class Participant {
     @NotEmpty
     private String name;
 
-    public void generateUniqueId(){
+    public void generateUniqueId() {
         this.id = (new ObjectId()).toHexString();
     }
 

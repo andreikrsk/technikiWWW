@@ -1,7 +1,6 @@
 package com.techniki.www.chatApp.models;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 

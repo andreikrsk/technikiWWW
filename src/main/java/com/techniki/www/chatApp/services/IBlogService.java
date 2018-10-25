@@ -7,8 +7,12 @@ import java.util.List;
 
 public interface IBlogService {
     List<Blog> getAll();
+
     Blog add(Blog blog);
+
     Blog getById(String id) throws BlogDoesntExistException;
+
     Blog change(Blog blog) throws BlogDoesntExistException;
+
     void delete(String id) throws BlogDoesntExistException;
 }

@@ -1,13 +1,10 @@
 package com.techniki.www.chatApp.models;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

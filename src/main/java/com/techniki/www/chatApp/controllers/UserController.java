@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Resource<User>> registerUser(@RequestBody User user) throws UserAlreadyExistsException{
+    public ResponseEntity<Resource<User>> registerUser(@RequestBody User user) throws UserAlreadyExistsException {
         System.out.println(user);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User insertedUser = userService.add(user);

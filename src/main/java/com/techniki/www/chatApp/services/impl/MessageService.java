@@ -18,22 +18,22 @@ public class MessageService implements IMessageService {
     private MessageRepository messageRepository;
 
     @Autowired
-    public MessageService(MessageRepository messageRepository){
+    public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
 
-    public Message add(@NotNull Message message){
+    public Message add(@NotNull Message message) {
         message.setCreated(new Date());
         return messageRepository.insert(message);
     }
 
-    public List<Message> get(){
+    public List<Message> get() {
         return messageRepository.findAll();
     }
 
-    public Message addByConv(String id) throws NoMessageFoundException{
+    public Message addByConv(String id) throws NoMessageFoundException {
         Optional<Message> byConv = messageRepository.findByConversationID(id);
-        if(byConv.isPresent()){
+        if (byConv.isPresent()) {
             return byConv.get();
         }
         throw new NoMessageFoundException(String.format("No message found by conversation id: %s", id));

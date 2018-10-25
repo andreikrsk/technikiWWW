@@ -16,7 +16,7 @@ public class Message {
     private String conversationID;
     private Boolean inChatRoom;
 
-    public void generateUniqueId(){
+    public void generateUniqueId() {
         this.id = (new ObjectId()).toHexString();
     }
 

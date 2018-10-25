@@ -1,18 +1,17 @@
 package com.techniki.www.chatApp.models;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.Singular;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
-//import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+//import javax.persistence.Id;
 
 @Data
 public class Blog {
@@ -33,7 +32,7 @@ public class Blog {
     private List<User> dislikedBy = new ArrayList<>();
     private List<Comment> comments = new ArrayList<>();
 
-    public void generateUniqueId(){
+    public void generateUniqueId() {
         this.id = (new ObjectId()).toHexString();
     }
 }

@@ -18,10 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
-import static com.techniki.www.chatApp.security.SecurityConstants.EXPIRATION_TIME;
-import static com.techniki.www.chatApp.security.SecurityConstants.HEADER_STRING;
-import static com.techniki.www.chatApp.security.SecurityConstants.SECRET;
-import static com.techniki.www.chatApp.security.SecurityConstants.TOKEN_PREFIX;
+import static com.techniki.www.chatApp.security.SecurityConstants.*;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
@@ -36,8 +33,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         try {
             User creds = new ObjectMapper()
                     .readValue(req.getInputStream(), User.class);
-            System.out.println("Try to auth");
-            System.out.println("creds -> " + creds);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(

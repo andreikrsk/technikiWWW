@@ -13,46 +13,46 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BlogService implements IBlogService{
+public class BlogService implements IBlogService {
 
     private BlogRepository blogRepository;
 
     @Autowired
-    BlogService(BlogRepository blogRepository){
+    BlogService(BlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }
 
-    public List<Blog> getAll(){
+    public List<Blog> getAll() {
         return blogRepository.findAll();
     }
 
-    public Blog add(Blog blog){
+    public Blog add(Blog blog) {
         blog.generateUniqueId();
         blog.setCreatedAt(new Date());
         return blogRepository.insert(blog);
     }
 
-    public Blog getById(@NotNull String id) throws BlogDoesntExistException{
+    public Blog getById(@NotNull String id) throws BlogDoesntExistException {
         final Optional<Blog> byId = blogRepository.findById(id);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             return byId.get();
         }
         throw new BlogDoesntExistException(String.format("Blog with %s id doesn't exist", id));
     }
 
-    public Blog change(@NotNull Blog blog) throws BlogDoesntExistException{
+    public Blog change(@NotNull Blog blog) throws BlogDoesntExistException {
         final boolean blogExists = blogRepository.existsById(blog.getId());
-        if(blogExists){
+        if (blogExists) {
             return blogRepository.save(blog);
         }
         throw new BlogDoesntExistException(String.format("Blog with %s id doesn't exist", blog.getId()));
     }
 
-    public void delete(@NotNull String id) throws BlogDoesntExistException{
+    public void delete(@NotNull String id) throws BlogDoesntExistException {
         final boolean blogExists = blogRepository.existsById(id);
-        if(blogExists){
+        if (blogExists) {
             blogRepository.deleteById(id);
-        }else {
+        } else {
             throw new BlogDoesntExistException(String.format("Blog with %s id doesn't exist", id));
         }
     }

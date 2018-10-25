@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface IUserService {
     List<User> getAll();
+
     User add(User user) throws UserAlreadyExistsException;
+
     User get(String name) throws UserDontExistException;
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IMessageService {
     Message add(Message message);
+
     List<Message> get();
+
     Message addByConv(String id) throws NoMessageFoundException;
 }

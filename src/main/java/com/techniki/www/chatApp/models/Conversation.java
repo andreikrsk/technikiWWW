@@ -22,7 +22,7 @@ public class Conversation {
     @Singular
     private List<Message> messages = new ArrayList<>();
 
-    public void generateUniqueId(){
+    public void generateUniqueId() {
         this.id = (new ObjectId()).toHexString();
     }
 }

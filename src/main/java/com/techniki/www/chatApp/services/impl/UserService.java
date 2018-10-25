@@ -31,7 +31,7 @@ public class UserService implements IUserService, UserDetailsService {
         return userRepository.findAll();
     }
 
-    public User add(User user) throws UserAlreadyExistsException{
+    public User add(User user) throws UserAlreadyExistsException {
         final Optional<User> byName = userRepository.findByUsername(user.getUsername());
         if (byName.isPresent()) {
             throw new UserAlreadyExistsException(String.format("User: %s already exists!", user.getUsername()));
@@ -41,9 +41,9 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     @Override
-    public User get(String name) throws UserDontExistException{
+    public User get(String name) throws UserDontExistException {
         final Optional<User> byName = userRepository.findByUsername(name);
-        if(!byName.isPresent()){
+        if (!byName.isPresent()) {
             throw new UserDontExistException(String.format("User with name: %s don't exist", name));
         }
         return byName.get();
@@ -52,7 +52,7 @@ public class UserService implements IUserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         final Optional<User> byName = userRepository.findByUsername(name);
-        if(!byName.isPresent()){
+        if (!byName.isPresent()) {
             throw new UsernameNotFoundException(String.format("User with name: %s don't exist", name));
         }
         return new org.springframework.security.core.userdetails.User(

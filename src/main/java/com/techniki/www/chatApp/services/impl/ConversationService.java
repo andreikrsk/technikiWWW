@@ -86,12 +86,12 @@ public class ConversationService implements IConversationService {
         }
     }
 
-    public Conversation getChatRoom() throws NoMessageFoundException{
+    public Conversation getChatRoom() throws NoMessageFoundException {
         final String name = "chat-room";
         Optional<Conversation> byName = conversationRepository.findByName(name);
-        if(byName.isPresent()){
+        if (byName.isPresent()) {
             Optional<Message> byConvID = messageRepository.findByConversationID(byName.get().getId());
-            if(byConvID.isPresent()){
+            if (byConvID.isPresent()) {
                 return new Conversation(byName.get().getId(),
                         name,
                         byName.get().getParticipants(),
@@ -99,7 +99,7 @@ public class ConversationService implements IConversationService {
                 );
             }
             throw new NoMessageFoundException(String.format("No message foud, when retrieving chatRoom messages"));
-        }else {
+        } else {
             Conversation chatRoom = new Conversation();
             chatRoom.setName(name);
             chatRoom.generateUniqueId();
